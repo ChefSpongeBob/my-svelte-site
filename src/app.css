@@ -33,6 +33,15 @@ h2 {
   font-size: 1.5rem;
   margin-top: 2.5rem;
 }
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
 
 p {
   font-size: 1.05rem;

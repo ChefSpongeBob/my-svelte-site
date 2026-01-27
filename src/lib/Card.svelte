@@ -21,4 +21,10 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
   }
+  h2 {
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 </style>
