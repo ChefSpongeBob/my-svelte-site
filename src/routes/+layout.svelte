@@ -26,6 +26,7 @@
     <div class="links">
       <a href="/about">About</a>
       <a href="/work">Work</a>
+      <a href="/iot">IOT & Systems Engineering</a>
       <a href="/contact">Contact</a>
     </div>
     <button class="theme-toggle" on:click={toggleTheme}>
@@ -45,10 +46,20 @@
 
 <style>
   .site-header {
-    border-bottom: 1px solid #eee;
-    padding: 1rem 2rem;
-  }
-
+  position: relative;
+  padding: 1.5rem 2rem;
+  background-image: url("/header-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(2px);
+}
   .nav {
     display: flex;
     justify-content: space-between;
@@ -61,17 +72,18 @@
     color: inherit;
   }
 
-  .links a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #555;
-    transition: color 0.2s ease;
-  }
+ .links a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
 
-  .links a:hover {
-    color: #000;
-  }
-
+.links a:hover {
+  color: white;
+  transform: translateY(-1px);
+}
   .content {
     padding: 3rem 2rem;
     max-width: 960px;

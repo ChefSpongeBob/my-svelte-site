@@ -9,18 +9,19 @@
 </article>
 
 <style>
-  .card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    background: var(--bg);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
+ .card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
   h2 {
   font-size: 1.1rem;
   letter-spacing: 0.02em;
