@@ -26,7 +26,7 @@
 
     <nav class="sidebar-nav">
       <a href="/" class="active">Overview</a>
-      <a href="/sensors">Sensors</a>
+      <a href="/iot">IOT & Dev</a>
       <a href="/work">Work</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
