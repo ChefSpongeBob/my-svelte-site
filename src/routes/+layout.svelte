@@ -101,25 +101,16 @@
 
 .site-header {
   position: relative;
-  padding: 1rem 1.5rem;
-  background-image: url("/header-bg.jpg");
-  background-size: cover;
-  background-position: center;
-}
-
-.site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 5, 8, 0.75);
+  padding: 0.75rem 1.5rem;
+  background: #0f1013;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .header-inner {
-  position: relative;
-  z-index: 1;
   display: flex;
   align-items: center;
   gap: 1rem;
+  height: 48px;
 }
 
 .header-title {
