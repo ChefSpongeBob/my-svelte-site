@@ -1,5 +1,5 @@
 <script>
-  export let data;
+  import "../app.css";
 </script>
 
 <header class="site-header">
@@ -44,6 +44,7 @@
     margin-left: 1.5rem;
     text-decoration: none;
     color: #555;
+    transition: color 0.2s ease;
   }
 
   .links a:hover {
