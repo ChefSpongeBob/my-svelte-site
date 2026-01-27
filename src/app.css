@@ -12,7 +12,6 @@
   --border-subtle: rgba(255, 255, 255, 0.06);
 }
 
-
 [data-theme="dark"] {
   --bg: #0f172a;
   --text: #e5e7eb;
