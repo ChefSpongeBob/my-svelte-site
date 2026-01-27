@@ -9,23 +9,36 @@
 </article>
 
 <style>
- .card {
-  background: white;
-  border-radius: 8px;
+.card {
+  background: var(--bg-panel);
+  border-radius: 14px;
   padding: 1.5rem;
-  border: 1px solid #eee;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid var(--border-subtle);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .card:hover {
+  background: var(--bg-panel-hover);
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 }
 
-  h2 {
-  font-size: 1.1rem;
-  letter-spacing: 0.02em;
+h2 {
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--accent-purple);
 }
+
+p {
+  margin: 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
 
 </style>

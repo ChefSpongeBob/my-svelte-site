@@ -1,10 +1,17 @@
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666666;
-  --border: #e5e7eb;
-  --accent: #3b82f6;
+  --bg-main: #121214;
+  --bg-panel: #1a1b1f;
+  --bg-panel-hover: #22232a;
+
+  --text-primary: #eaeaf0;
+  --text-secondary: #a1a1b3;
+
+  --accent-purple: #7c5cff;
+  --accent-red: #e25555;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
 }
+
 
 [data-theme="dark"] {
   --bg: #0f172a;
@@ -19,9 +26,12 @@
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  font-family: "Inter", system-ui, sans-serif;
 }
+
 
 h1 {
   font-size: clamp(2.2rem, 4vw, 3rem);
