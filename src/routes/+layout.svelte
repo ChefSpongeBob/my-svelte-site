@@ -2,6 +2,7 @@
   import "../app.css";
   import { onMount } from "svelte";
   import { spring } from "svelte/motion";
+  import { page } from "$app/stores";
 
   const sidebar = spring(1, {
     stiffness: 0.15,
@@ -44,11 +45,25 @@
     <div class="sidebar-title">Charlotte’s Web</div>
 
     <nav class="sidebar-nav">
-      <a href="/" class="active">Overview</a>
-      <a href="/iot">IOT & Dev</a>
-      <a href="/work">Work</a>
-      <a href="/about">About</a>
-      <a href="/contact">Contact</a>
+      <a href="/" class:active={$page.url.pathname === "/"}>
+        Overview
+      </a>
+
+      <a href="/iot" class:active={$page.url.pathname.startsWith("/iot")}>
+        IOT & Dev
+      </a>
+
+      <a href="/work" class:active={$page.url.pathname.startsWith("/work")}>
+        Work
+      </a>
+
+      <a href="/about" class:active={$page.url.pathname.startsWith("/about")}>
+        About
+      </a>
+
+      <a href="/contact" class:active={$page.url.pathname.startsWith("/contact")}>
+        Contact
+      </a>
     </nav>
   </aside>
 
