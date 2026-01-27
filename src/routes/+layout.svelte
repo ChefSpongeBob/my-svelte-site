@@ -1,18 +1,24 @@
 <script>
   import "../app.css";
   import { onMount } from "svelte";
-  let sidebarOpen = false;
+  import { spring } from "svelte/motion";
+
+  const sidebar = spring(1, {
+    stiffness: 0.15,
+    damping: 0.4
+  });
 
   onMount(() => {
     const saved = localStorage.getItem("sidebar-open");
-    if (saved !== null) {
-      sidebarOpen = saved === "true";
-    }
+    sidebar.set(saved === "true" ? 1 : 0);
   });
 
   function toggleSidebar() {
-    sidebarOpen = !sidebarOpen;
-    localStorage.setItem("sidebar-open", String(sidebarOpen));
+    sidebar.update(v => {
+      const next = v > 0.5 ? 0 : 1;
+      localStorage.setItem("sidebar-open", String(next === 1));
+      return next;
+    });
   }
 </script>
 
@@ -33,7 +39,7 @@
 <div class="app-shell">
   <aside
     class="sidebar"
-    class:collapsed={!sidebarOpen}
+    style="transform: translateX(calc(-168px * (1 - {$sidebar})));"
   >
     <div class="sidebar-title">Charlotte’s Web</div>
 
@@ -65,15 +71,18 @@
   /* --- Sidebar --- */
   .sidebar {
     width: 240px;
-    background: #0f1013;
+    background: linear-gradient(
+      180deg,
+      rgba(26, 27, 31, 0.9),
+      rgba(18, 18, 20, 0.95)
+    );
+    backdrop-filter: blur(10px);
     border-right: 1px solid var(--border-subtle);
     padding: 1.5rem 1rem;
-    transition: width 0.25s ease;
     overflow: hidden;
-  }
-
-  .sidebar.collapsed {
-    width: 72px;
+    box-shadow:
+      inset -1px 0 0 rgba(255, 255, 255, 0.03),
+      0 0 40px rgba(124, 92, 255, 0.08);
   }
 
   .sidebar-title {
@@ -83,12 +92,7 @@
     text-transform: uppercase;
     color: var(--text-secondary);
     margin-bottom: 2rem;
-    transition: opacity 0.15s ease;
     white-space: nowrap;
-  }
-
-  .sidebar.collapsed .sidebar-title {
-    opacity: 0;
   }
 
   .sidebar-nav a {
@@ -102,7 +106,8 @@
     transition:
       background 0.2s ease,
       color 0.2s ease,
-      transform 0.15s ease;
+      transform 0.15s ease,
+      box-shadow 0.2s ease;
   }
 
   .sidebar-nav a:hover {
@@ -112,19 +117,25 @@
   }
 
   .sidebar-nav a.active {
-    background: rgba(124, 92, 255, 0.18);
+    background: linear-gradient(
+      90deg,
+      rgba(124, 92, 255, 0.22),
+      rgba(124, 92, 255, 0.05)
+    );
     color: var(--accent-purple);
-  }
-
-  .sidebar.collapsed .sidebar-nav a {
-    text-align: center;
-    padding: 0.6rem 0;
+    box-shadow:
+      inset 2px 0 0 var(--accent-purple),
+      0 0 12px rgba(124, 92, 255, 0.35);
   }
 
   /* --- Header --- */
   .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 0.75rem 1.5rem;
-    background: #0f1013;
+    backdrop-filter: blur(8px);
+    background: rgba(15, 16, 19, 0.75);
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -149,6 +160,12 @@
     color: var(--text-primary);
     font-size: 1.25rem;
     cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .sidebar-toggle:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
   }
 
   /* --- Content --- */

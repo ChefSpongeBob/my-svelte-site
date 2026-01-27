@@ -88,3 +88,9 @@ main > * + * {
 .footer {
   border-color: var(--border);
 }
+:root {
+  --purple-glow: rgba(124, 92, 255, 0.35);
+}
+button:hover {
+  box-shadow: 0 0 8px var(--purple-glow), 0 0 16px var(--purple-glow);
+}
