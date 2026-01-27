@@ -10,6 +10,25 @@
     sidebarCollapsed = saved === "false";
   });
 
+  let canInstall = false;
+  let deferredPrompt;
+
+  onMount(() => {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      canInstall = true;
+    });
+  });
+
+  async function installApp() {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    canInstall = false;
+  }
+
   function toggleSidebar() {
     sidebarCollapsed = !sidebarCollapsed;
     localStorage.setItem("sidebar-open", String(!sidebarCollapsed));
@@ -40,7 +59,7 @@
       {/if}
     </div>
 
-      <nav class="sidebar-nav">
+    <nav class="sidebar-nav">
       <a href="/" class:active={$page.url.pathname === "/"}>
         {#if sidebarCollapsed}
           <i class="fa-solid fa-house"></i>
@@ -80,6 +99,16 @@
           Contact
         {/if}
       </a>
+
+      {#if canInstall}
+        <button class="install-tab" on:click={installApp}>
+          {#if sidebarCollapsed}
+            <i class="fas fa-download"></i>
+          {:else}
+            Install App
+          {/if}
+        </button>
+      {/if}
     </nav>
   </aside>
 
@@ -135,7 +164,8 @@
     font-size: 1.8rem;
   }
 
-  .sidebar-nav a {
+  .sidebar-nav a,
+  .sidebar-nav .install-tab {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,9 +176,13 @@
     color: var(--text-secondary);
     font-size: 0.95rem;
     transition: background 0.2s ease, color 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
-  .sidebar-nav a:hover {
+  .sidebar-nav a:hover,
+  .sidebar-nav .install-tab:hover {
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
   }
