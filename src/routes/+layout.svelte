@@ -1,6 +1,23 @@
 <script>
   import "../app.css";
+  import { onMount } from "svelte";
+
+  let theme = "light";
+
+  onMount(() => {
+    const saved = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    theme = saved ?? (prefersDark ? "dark" : "light");
+    document.documentElement.dataset.theme = theme;
+  });
+
+  function toggleTheme() {
+    theme = theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }
 </script>
+
 
 <header class="site-header">
   <nav class="nav">
@@ -11,6 +28,10 @@
       <a href="/work">Work</a>
       <a href="/contact">Contact</a>
     </div>
+    <button class="theme-toggle" on:click={toggleTheme}>
+  {theme === "light" ? "🌙" : "☀️"}
+</button>
+
   </nav>
 </header>
 
@@ -63,4 +84,15 @@
     text-align: center;
     color: #777;
   }
+
+  .theme-toggle {
+  margin-left: 1.5rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
 </style>
