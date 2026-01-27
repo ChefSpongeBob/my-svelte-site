@@ -2,12 +2,16 @@
   import "../app.css";
   import { onMount } from "svelte";
   import { spring } from "svelte/motion";
-  import { page } from "$app/stores";
+  import { page } from "$app/stores";  // <-- Import page store to track route
 
   const sidebar = spring(1, {
     stiffness: 0.15,
     damping: 0.4
   });
+
+  // Determine whether the sidebar is collapsed
+  let sidebarCollapsed = false;
+  $: sidebarCollapsed = $page.url.pathname !== "/" && sidebar === 0;  // Change this condition if needed
 
   onMount(() => {
     const saved = localStorage.getItem("sidebar-open");
@@ -42,27 +46,49 @@
     class="sidebar"
     style="transform: translateX(calc(-168px * (1 - {$sidebar})));"
   >
-    <div class="sidebar-title">Charlotte’s Web</div>
+    <div class="sidebar-title">
+      {#if sidebarCollapsed}
+        <!-- Show logo when collapsed -->
+        <img src="/path/to/logo.svg" alt="Logo" class="sidebar-logo" />
+      {:else}
+        <!-- Show text when expanded -->
+        Charlotte’s Web
+      {/if}
+    </div>
 
     <nav class="sidebar-nav">
       <a href="/" class:active={$page.url.pathname === "/"}>
-        Overview
+        {#if sidebarCollapsed}
+          <i class="icon-home"></i>  <!-- Example icon, replace with real one -->
+        {:else}
+          Overview
+        {/if}
       </a>
-
       <a href="/iot" class:active={$page.url.pathname.startsWith("/iot")}>
-        IOT & Dev
+        {#if sidebarCollapsed}
+          <i class="icon-iot"></i> <!-- Icon for IOT -->
+        {:else}
+          IOT & Dev
+        {/if}
       </a>
-
       <a href="/work" class:active={$page.url.pathname.startsWith("/work")}>
-        Work
+        {#if sidebarCollapsed}
+          <i class="icon-work"></i> <!-- Icon for Work -->
+        {:else}
+          Work
+        {/if}
       </a>
-
       <a href="/about" class:active={$page.url.pathname.startsWith("/about")}>
-        About
+        {#if sidebarCollapsed}
+          <i class="icon-about"></i> <!-- Icon for About -->
+        {:else}
+          About
+        {/if}
       </a>
-
       <a href="/contact" class:active={$page.url.pathname.startsWith("/contact")}>
-        Contact
+        {#if sidebarCollapsed}
+          <i class="icon-contact"></i> <!-- Icon for Contact -->
+        {/if}
       </a>
     </nav>
   </aside>
@@ -108,10 +134,18 @@
     color: var(--text-secondary);
     margin-bottom: 2rem;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar-logo {
+    width: 32px;  /* Adjust size of logo */
+    height: auto;
   }
 
   .sidebar-nav a {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 0.65rem 0.75rem;
     margin-bottom: 0.3rem;
     border-radius: 8px;
