@@ -1,21 +1,27 @@
 <script>
   import "/src/app.css";
+
+  let sidebarOpen = true;
 </script>
 
-<header class="site-header">
-  <nav class="nav">
-    <a href="/" class="logo">Charlotte’s Web</a>
 
-    <div class="links">
-      <a href="/about">About</a>
-      <a href="/work">Work</a>
-      <a href="/sensors">Sensors</a>
-      <a href="/contact">Contact</a>
-    </div>
-  </nav>
+<header class="site-header">
+  <div class="header-inner">
+<button
+  class="sidebar-toggle"
+  on:click={() => (sidebarOpen = !sidebarOpen)}
+  aria-label="Toggle sidebar"
+>
+  ☰
+</button>
+
+
+    <span class="header-title">Charlotte’s Web</span>
+  </div>
 </header>
 <div class="app-shell">
-  <aside class="sidebar">
+  <aside class="sidebar {sidebarOpen ? 'open' : 'collapsed'}">
+
     <div class="sidebar-title">Charlotte’s Web</div>
 
     <nav class="sidebar-nav">
@@ -46,8 +52,22 @@
   width: 240px;
   background: #0f1013;
   border-right: 1px solid var(--border-subtle);
-  padding: 2rem 1.5rem;
+  transition: width 0.25s ease;
+  overflow: hidden;
 }
+
+.sidebar.collapsed {
+  width: 72px;
+}
+.sidebar.collapsed .sidebar-title {
+  opacity: 0;
+}
+
+.sidebar.collapsed .sidebar-nav a {
+  text-align: center;
+  padding: 0.6rem 0;
+}
+
 
 .sidebar-title {
   font-weight: 600;
@@ -81,16 +101,43 @@
 
 .site-header {
   position: relative;
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   background-image: url("/header-bg.jpg");
   background-size: cover;
   background-position: center;
-  color: white;
-  z-index: 0;
 }
+
 .site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: rgba(5, 5, 8, 0.75);
 }
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-title {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
   .nav {
     position: relative;
     z-index: 1;
@@ -121,10 +168,11 @@
 }
 
 
-  .footer {
-    border-top: 1px solid #eee;
-    padding: 2rem;
-    text-align: center;
-    color: #777;
-  }
+.footer {
+  border-top: 1px solid var(--border-subtle);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
 </style>
