@@ -114,11 +114,12 @@
 }
 
 
-  .content {
-    padding: 3rem 2rem;
-    max-width: 960px;
-    margin: 0 auto;
-  }
+.content {
+  flex: 1;
+  padding: 3rem;
+  max-width: 1100px;
+}
+
 
   .footer {
     border-top: 1px solid #eee;
