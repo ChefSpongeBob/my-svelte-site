@@ -1,8 +1,7 @@
 <script>
   import "../app.css";
   import { onMount } from "svelte";
-
-  let sidebarOpen = true;
+  let sidebarOpen = false;
 
   onMount(() => {
     const saved = localStorage.getItem("sidebar-open");
@@ -13,7 +12,7 @@
 
   function toggleSidebar() {
     sidebarOpen = !sidebarOpen;
-    localStorage.setItem("sidebar-open", sidebarOpen);
+    localStorage.setItem("sidebar-open", String(sidebarOpen));
   }
 </script>
 
