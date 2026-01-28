@@ -47,13 +47,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <button
-      class="sidebar-toggle"
-      on:click={toggleSidebar}
-      aria-label="Toggle sidebar"
-    >
-      ☰
-    </button>
+    
 
     <div class="header-title">
       <div>Cweb</div>
@@ -76,54 +70,79 @@
 {/if}
 
 
-    <nav class="sidebar-nav">
-      <a href="/" class:active={$page.url.pathname === "/"}>
-        <i class="fas fa-spider sidebar-logo"></i>
-        {#if !sidebarCollapsed}
-          <span> Home</span>
-        {/if}
-      </a>
+<nav class="sidebar-nav">
+  <a
+    href="/"
+    class:active={$page.url.pathname === "/"}
+    on:click={() => sidebarCollapsed = true}
+  >
+    <i class="fas fa-spider sidebar-logo"></i>
+    {#if !sidebarCollapsed}
+      <span> Home</span>
+    {/if}
+  </a>
 
-      <a href="/download" class:active={$page.url.pathname.startsWith("/download")}>
-        {#if sidebarCollapsed}
-          <i class="fa-solid fa-download"></i>
-        {:else}
-          App
-        {/if}
-      </a>
+  <a
+    href="/download"
+    class:active={$page.url.pathname.startsWith("/download")}
+    on:click={() => sidebarCollapsed = true}
+  >
+    {#if sidebarCollapsed}
+      <i class="fa-solid fa-download"></i>
+    {:else}
+      App
+    {/if}
+  </a>
 
-      <a href="/iot" class:active={$page.url.pathname.startsWith("/iot")}>
-        {#if sidebarCollapsed}
-          <i class="fas fa-plug"></i>
-        {:else}
-          IOT Sys Arch
-        {/if}
-      </a>
+  <a
+    href="/iot"
+    class:active={$page.url.pathname.startsWith("/iot")}
+    on:click={() => sidebarCollapsed = true}
+  >
+    {#if sidebarCollapsed}
+      <i class="fas fa-plug"></i>
+    {:else}
+      IOT Sys Arch
+    {/if}
+  </a>
 
-      <a href="/work" class:active={$page.url.pathname.startsWith("/work")}>
-        {#if sidebarCollapsed}
-          <i class="fas fa-briefcase"></i>
-        {:else}
-          Projects
-        {/if}
-      </a>
+  <a
+    href="/work"
+    class:active={$page.url.pathname.startsWith("/work")}
+    on:click={() => sidebarCollapsed = true}
+  >
+    {#if sidebarCollapsed}
+      <i class="fas fa-briefcase"></i>
+    {:else}
+      Projects
+    {/if}
+  </a>
 
-      <a href="/about" class:active={$page.url.pathname.startsWith("/about")}>
-        {#if sidebarCollapsed}
-          <i class="fas fa-circle-info"></i>
-        {:else}
-          About
-        {/if}
-      </a>
+  <a
+    href="/about"
+    class:active={$page.url.pathname.startsWith("/about")}
+    on:click={() => sidebarCollapsed = true}
+  >
+    {#if sidebarCollapsed}
+      <i class="fas fa-circle-info"></i>
+    {:else}
+      About
+    {/if}
+  </a>
 
-      <a href="/contact" class:active={$page.url.pathname.startsWith("/contact")}>
-        {#if sidebarCollapsed}
-          <i class="fas fa-envelope"></i>
-        {:else}
-          Contact
-        {/if}
-      </a>
-    </nav>
+  <a
+    href="/contact"
+    class:active={$page.url.pathname.startsWith("/contact")}
+    on:click={() => sidebarCollapsed = true}
+  >
+    {#if sidebarCollapsed}
+      <i class="fas fa-envelope"></i>
+    {:else}
+      Contact
+    {/if}
+  </a>
+</nav>
+
   </aside>
 
   <main class="content">
@@ -245,8 +264,11 @@
   cursor: pointer;
   position: relative;
   z-index: 30;
+  width: auto;
+  align-self: center;
+    margin-top: -0.5rem; /* move up slightly */
+  margin-right: 0.5rem; /* nudge toward edge */
 }
-
 
   .content {
     flex: 1;
