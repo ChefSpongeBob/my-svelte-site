@@ -230,6 +230,9 @@
     );
     color: var(--accent-purple);
   }
+.sidebar-nav {
+  margin-top: 2.75rem;
+}
 
   .site-header {
     position: sticky;
@@ -260,15 +263,18 @@
   background: none;
   border: none;
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: 0.95rem;     /* smaller glyph */
   cursor: pointer;
-  position: relative;
+
+  position: absolute;
+  top: 0.75rem;           /* vertical spacing from top border */
+  left: 0.75rem;          /* horizontal spacing from left border */
+
   z-index: 30;
-  width: auto;
-  align-self: center;
-    margin-top: -0.5rem; /* move up slightly */
-  margin-right: 0.5rem; /* nudge toward edge */
+  line-height: 1;
+  padding: 0.25rem;
 }
+
 
   .content {
     flex: 1;
@@ -285,7 +291,7 @@
 
   @media (max-width: 768px) {
   .sidebar {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     height: 100vh;
