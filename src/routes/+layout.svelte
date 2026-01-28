@@ -65,7 +65,11 @@
 
 <div class="app-shell">
   <aside class="sidebar {sidebarCollapsed ? 'collapsed' : ''}">
-  {#if !sidebarCollapsed}
+  <button class="sidebar-toggle" on:click={toggleSidebar} aria-label="Toggle sidebar">
+  ☰
+</button>
+
+    {#if !sidebarCollapsed}
   <div class="sidebar-title">
     Charlotte’s Web
   </div>
@@ -137,22 +141,24 @@
     min-height: calc(100vh - 80px);
   }
 
-  .sidebar {
-    width: 240px;
-    background: linear-gradient(
-      180deg,
-      rgba(26, 27, 31, 0.9),
-      rgba(18, 18, 20, 0.95)
-    );
-    backdrop-filter: blur(10px);
-    border-right: 1px solid var(--border-subtle);
-    padding: 1.5rem 1rem;
-    overflow: hidden;
-    transition: width 0.25s ease;
-    box-shadow:
-      inset -1px 0 0 rgba(255, 255, 255, 0.03),
-      0 0 40px rgba(124, 92, 255, 0.08);
-  }
+.sidebar {
+  width: 240px;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 27, 31, 0.9),
+    rgba(18, 18, 20, 0.95)
+  );
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--border-subtle);
+  padding: 1.5rem 1rem;
+  overflow: hidden;
+  transition: width 0.25s ease;
+  box-shadow:
+    inset -1px 0 0 rgba(255, 255, 255, 0.03),
+    0 0 40px rgba(124, 92, 255, 0.08);
+  z-index: 20;
+}
+
 
   .sidebar.collapsed {
     width: 72px;
@@ -231,13 +237,16 @@
     color: var(--text-secondary);
   }
 
-  .sidebar-toggle {
-    background: none;
-    border: none;
-    color: var(--text-primary);
-    font-size: 1.25rem;
-    cursor: pointer;
-  }
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 30;
+}
+
 
   .content {
     flex: 1;
@@ -253,27 +262,22 @@
   }
 
   @media (max-width: 768px) {
-  .app-shell {
-    position: relative;
-  }
-
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     z-index: 20;
-    transform: translateX(0);
+    transform: translateX(-100%);
     transition: transform 0.25s ease;
   }
 
-  .sidebar.collapsed {
-    transform: translateX(-100%);
+  .sidebar:not(.collapsed) {
+    transform: translateX(0);
   }
 
   .content {
     padding: 2rem 1.25rem;
   }
 }
-
 </style>
