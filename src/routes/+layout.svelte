@@ -120,15 +120,6 @@
         {/if}
       </a>
 
-      {#if canInstall}
-        <button class="install-tab" on:click={installApp}>
-          {#if sidebarCollapsed}
-            <i class="fas fa-download"></i>
-          {:else}
-            Install App
-          {/if}
-        </button>
-      {/if}
     </nav>
   </aside>
 
