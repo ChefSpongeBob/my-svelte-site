@@ -79,6 +79,15 @@
         {/if}
       </a>
 
+      <a href="/download" class:active={$page.url.pathname.startsWith("/download")}>
+        {#if sidebarCollapsed}
+          <i class="fa-solid fa-download"></i>
+        {:else}
+          Download
+        {/if}
+      </a>
+
+
       <a href="/iot" class:active={$page.url.pathname.startsWith("/iot")}>
         {#if sidebarCollapsed}
           <i class="fas fa-plug"></i>
