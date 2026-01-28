@@ -5,16 +5,6 @@
 
   let sidebarCollapsed = false;
 
-  onMount(async () => {
-    if ("serviceWorker" in navigator) {
-      try {
-        await navigator.serviceWorker.register("/sw.js");
-        console.log("✅ Service worker registered");
-      } catch (err) {
-        console.error("❌ Service worker registration failed", err);
-      }
-    }
-  });
 
   onMount(() => {
     const saved = localStorage.getItem("sidebar-open");
