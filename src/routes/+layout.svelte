@@ -15,7 +15,6 @@
     }
   });
 
-
   onMount(() => {
     const saved = localStorage.getItem("sidebar-open");
     sidebarCollapsed = saved === "false";
@@ -56,26 +55,28 @@
       ☰
     </button>
 
-    <span class="header-title">Charlotte’s Web</span>
+    <div class="header-title">
+      <div>Cweb</div>
+      <div class="header-subtitle">Driving Things to do Stuff.</div>
+    </div>
   </div>
 </header>
 
+
 <div class="app-shell">
   <aside class="sidebar {sidebarCollapsed ? 'collapsed' : ''}">
-    <div class="sidebar-title">
-      {#if sidebarCollapsed}
-        <i class="fas fa-spider sidebar-logo"></i>
-      {:else}
-        Charlotte’s Web
-      {/if}
-    </div>
+  {#if !sidebarCollapsed}
+  <div class="sidebar-title">
+    Charlotte’s Web
+  </div>
+{/if}
+
 
     <nav class="sidebar-nav">
       <a href="/" class:active={$page.url.pathname === "/"}>
-        {#if sidebarCollapsed}
-          <i class="fa-solid fa-house"></i>
-        {:else}
-          Overview
+        <i class="fas fa-spider sidebar-logo"></i>
+        {#if !sidebarCollapsed}
+          <span> Home</span>
         {/if}
       </a>
 
@@ -83,16 +84,15 @@
         {#if sidebarCollapsed}
           <i class="fa-solid fa-download"></i>
         {:else}
-          Download
+          App
         {/if}
       </a>
-
 
       <a href="/iot" class:active={$page.url.pathname.startsWith("/iot")}>
         {#if sidebarCollapsed}
           <i class="fas fa-plug"></i>
         {:else}
-          IOT & Dev
+          IOT Sys Arch
         {/if}
       </a>
 
@@ -100,7 +100,7 @@
         {#if sidebarCollapsed}
           <i class="fas fa-briefcase"></i>
         {:else}
-          Work
+          Projects
         {/if}
       </a>
 
@@ -119,7 +119,6 @@
           Contact
         {/if}
       </a>
-
     </nav>
   </aside>
 
@@ -252,4 +251,29 @@
     text-align: center;
     color: var(--text-secondary);
   }
+
+  @media (max-width: 768px) {
+  .app-shell {
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 20;
+    transform: translateX(0);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+  }
+
+  .content {
+    padding: 2rem 1.25rem;
+  }
+}
+
 </style>

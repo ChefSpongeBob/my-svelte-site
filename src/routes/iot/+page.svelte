@@ -28,7 +28,75 @@
     </div>
 
     <div class="preview-graph">
-      GRAPH HERE
+<svg
+  viewBox="0 0 180 70"
+  width="180"
+  height="70"
+  aria-hidden="true"
+>
+  <polyline
+    points="0,45 20,42 40,48 60,40 80,38 100,44 120,36 140,39 160,34 180,37"
+    fill="none"
+    stroke="rgba(124, 92, 255, 0.9)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-info">
+      <strong>Bedroom</strong>
+      <div class="muted">Temp: 21.2°C</div>
+      <div class="muted">Humidity: 52%</div>
+      <div class="status">Last update: 5 min ago</div>
+    </div>
+
+    <div class="preview-graph">
+<svg
+  viewBox="0 0 180 70"
+  width="180"
+  height="70"
+  aria-hidden="true"
+>
+  <polyline
+    points="0,45 20,42 40,48 60,40 80,38 100,44 120,36 140,39 160,34 180,37"
+    fill="none"
+    stroke="rgba(124, 92, 255, 0.9)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-info">
+      <strong>Basement</strong>
+      <div class="muted">Temp: 18.9°C</div>
+      <div class="muted">Humidity: 61%</div>
+      <div class="status">Last update: 12 min ago</div>
+    </div>
+
+    <div class="preview-graph">
+<svg
+  viewBox="0 0 180 70"
+  width="180"
+  height="70"
+  aria-hidden="true"
+>
+  <polyline
+    points="0,45 20,42 40,48 60,40 80,38 100,44 120,36 140,39 160,34 180,37"
+    fill="none"
+    stroke="rgba(124, 92, 255, 0.9)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
     </div>
   </div>
 </section>

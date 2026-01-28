@@ -41,7 +41,21 @@
     </div>
 
     <div class="preview-graph">
-      GRAPH HERE
+<svg
+  viewBox="0 0 180 70"
+  width="180"
+  height="70"
+  aria-hidden="true"
+>
+  <polyline
+    points="0,45 20,42 40,48 60,40 80,38 100,44 120,36 140,39 160,34 180,37"
+    fill="none"
+    stroke="rgba(124, 92, 255, 0.9)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
     </div>
   </div>
 </section>
