@@ -4,13 +4,14 @@
   import { page } from "$app/stores";
 
   let sidebarCollapsed = false;
+
   onMount(async () => {
-    if ('serviceWorker' in navigator) {
+    if ("serviceWorker" in navigator) {
       try {
-        await navigator.serviceWorker.register('/sw.js');
-        console.log('✅ Service worker registered');
+        await navigator.serviceWorker.register("/sw.js");
+        console.log("✅ Service worker registered");
       } catch (err) {
-        console.error('❌ Service worker registration failed', err);
+        console.error("❌ Service worker registration failed", err);
       }
     }
   });
@@ -47,8 +48,6 @@
 
 <header class="site-header">
   <div class="header-inner">
-    
-
     <div class="header-title">
       <div>Cweb</div>
       <div class="header-subtitle">Driving Things to do Stuff.</div>
@@ -56,93 +55,92 @@
   </div>
 </header>
 
-
 <div class="app-shell">
   <aside class="sidebar {sidebarCollapsed ? 'collapsed' : ''}">
-  <button class="sidebar-toggle" on:click={toggleSidebar} aria-label="Toggle sidebar">
-  ☰
-</button>
+    <button
+      class="sidebar-toggle"
+      on:click={toggleSidebar}
+      aria-label="Toggle sidebar"
+    >
+      ☰
+    </button>
 
     {#if !sidebarCollapsed}
-  <div class="sidebar-title">
-    Charlotte’s Web
-  </div>
-{/if}
-
-
-<nav class="sidebar-nav">
-  <a
-    href="/"
-    class:active={$page.url.pathname === "/"}
-    on:click={() => sidebarCollapsed = true}
-  >
-    <i class="fas fa-spider sidebar-logo"></i>
-    {#if !sidebarCollapsed}
-      <span> Home</span>
+      <div class="sidebar-title">Charlotte’s Web</div>
     {/if}
-  </a>
 
-  <a
-    href="/download"
-    class:active={$page.url.pathname.startsWith("/download")}
-    on:click={() => sidebarCollapsed = true}
-  >
-    {#if sidebarCollapsed}
-      <i class="fa-solid fa-download"></i>
-    {:else}
-      App
-    {/if}
-  </a>
+    <nav class="sidebar-nav">
+      <a
+        href="/"
+        class:active={$page.url.pathname === "/"}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        <i class="fas fa-spider sidebar-logo"></i>
+        {#if !sidebarCollapsed}
+          <span> Home</span>
+        {/if}
+      </a>
 
-  <a
-    href="/iot"
-    class:active={$page.url.pathname.startsWith("/iot")}
-    on:click={() => sidebarCollapsed = true}
-  >
-    {#if sidebarCollapsed}
-      <i class="fas fa-plug"></i>
-    {:else}
-      IOT Sys Arch
-    {/if}
-  </a>
+      <a
+        href="/download"
+        class:active={$page.url.pathname.startsWith("/download")}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        {#if sidebarCollapsed}
+          <i class="fa-solid fa-download"></i>
+        {:else}
+          App
+        {/if}
+      </a>
 
-  <a
-    href="/work"
-    class:active={$page.url.pathname.startsWith("/work")}
-    on:click={() => sidebarCollapsed = true}
-  >
-    {#if sidebarCollapsed}
-      <i class="fas fa-briefcase"></i>
-    {:else}
-      Projects
-    {/if}
-  </a>
+      <a
+        href="/iot"
+        class:active={$page.url.pathname.startsWith("/iot")}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        {#if sidebarCollapsed}
+          <i class="fas fa-plug"></i>
+        {:else}
+          IOT Sys Arch
+        {/if}
+      </a>
 
-  <a
-    href="/about"
-    class:active={$page.url.pathname.startsWith("/about")}
-    on:click={() => sidebarCollapsed = true}
-  >
-    {#if sidebarCollapsed}
-      <i class="fas fa-circle-info"></i>
-    {:else}
-      About
-    {/if}
-  </a>
+      <a
+        href="/work"
+        class:active={$page.url.pathname.startsWith("/work")}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        {#if sidebarCollapsed}
+          <i class="fas fa-briefcase"></i>
+        {:else}
+          Projects
+        {/if}
+      </a>
 
-  <a
-    href="/contact"
-    class:active={$page.url.pathname.startsWith("/contact")}
-    on:click={() => sidebarCollapsed = true}
-  >
-    {#if sidebarCollapsed}
-      <i class="fas fa-envelope"></i>
-    {:else}
-      Contact
-    {/if}
-  </a>
-</nav>
+      <a
+        href="/about"
+        class:active={$page.url.pathname.startsWith("/about")}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        {#if sidebarCollapsed}
+          <i class="fas fa-circle-info"></i>
+        {:else}
+          About
+        {/if}
+      </a>
 
+      <a
+        href="/contact"
+        class:active={$page.url.pathname.startsWith("/contact")}
+        on:click={() => (sidebarCollapsed = true)}
+      >
+        {#if sidebarCollapsed}
+          <i class="fas fa-envelope"></i>
+        {:else}
+          Contact
+        {/if}
+      </a>
+    </nav>
   </aside>
 
   <main class="content">
@@ -160,24 +158,24 @@
     min-height: calc(100vh - 80px);
   }
 
-.sidebar {
-  width: 240px;
-  background: linear-gradient(
-    180deg,
-    rgba(26, 27, 31, 0.9),
-    rgba(18, 18, 20, 0.95)
-  );
-  backdrop-filter: blur(10px);
-  border-right: 1px solid var(--border-subtle);
-  padding: 1.5rem 1rem;
-  overflow: hidden;
-  transition: width 0.25s ease;
-  box-shadow:
-    inset -1px 0 0 rgba(255, 255, 255, 0.03),
-    0 0 40px rgba(124, 92, 255, 0.08);
-  z-index: 20;
-}
-
+  .sidebar {
+    width: 240px;
+    background: linear-gradient(
+      180deg,
+      rgba(26, 27, 31, 0.9),
+      rgba(18, 18, 20, 0.95)
+    );
+    backdrop-filter: blur(10px);
+    border-right: 1px solid var(--border-subtle);
+    padding: 1.5rem 1rem;
+    overflow: hidden;
+    transition: width 0.25s ease;
+    box-shadow:
+      inset -1px 0 0 rgba(255, 255, 255, 0.03),
+      0 0 40px rgba(124, 92, 255, 0.08);
+    z-index: 20;
+    position: relative;
+  }
 
   .sidebar.collapsed {
     width: 72px;
@@ -199,8 +197,11 @@
     font-size: 1.8rem;
   }
 
-  .sidebar-nav a,
-  .sidebar-nav .install-tab {
+  .sidebar-nav {
+    margin-top: 2.75rem;
+  }
+
+  .sidebar-nav a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,13 +212,9 @@
     color: var(--text-secondary);
     font-size: 0.95rem;
     transition: background 0.2s ease, color 0.2s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
   }
 
-  .sidebar-nav a:hover,
-  .sidebar-nav .install-tab:hover {
+  .sidebar-nav a:hover {
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
   }
@@ -230,9 +227,26 @@
     );
     color: var(--accent-purple);
   }
-.sidebar-nav {
-  margin-top: 2.75rem;
-}
+
+  .sidebar-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 30;
+    line-height: 1;
+    padding: 0.25rem;
+  }
+
+  .content {
+    flex: 1;
+    padding: 3rem;
+    max-width: 1100px;
+  }
 
   .site-header {
     position: sticky;
@@ -244,44 +258,6 @@
     border-bottom: 1px solid var(--border-subtle);
   }
 
-  .header-inner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    height: 48px;
-  }
-
-  .header-title {
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
-
-.sidebar-toggle {
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  font-size: 0.95rem;     /* smaller glyph */
-  cursor: pointer;
-
-  position: absolute;
-  top: 0.75rem;           /* vertical spacing from top border */
-  left: 0.75rem;          /* horizontal spacing from left border */
-
-  z-index: 30;
-  line-height: 1;
-  padding: 0.25rem;
-}
-
-
-  .content {
-    flex: 1;
-    padding: 3rem;
-    max-width: 1100px;
-  }
-
   .footer {
     border-top: 1px solid var(--border-subtle);
     padding: 2rem;
@@ -290,22 +266,8 @@
   }
 
   @media (max-width: 768px) {
-  .sidebar {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 20;
-    transform: translateX(-100%);
-    transition: transform 0.25s ease;
+    .content {
+      padding: 2rem 1.25rem;
+    }
   }
-
-  .sidebar:not(.collapsed) {
-    transform: translateX(0);
-  }
-
-  .content {
-    padding: 2rem 1.25rem;
-  }
-}
 </style>
