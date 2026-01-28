@@ -3,8 +3,15 @@
 
   let deferredPrompt = null;
   let installable = false;
+  let isIOS = false;
+  let isMobile = false;
 
   onMount(() => {
+    const ua = navigator.userAgent.toLowerCase();
+
+    isIOS = /iphone|ipad|ipod/.test(ua);
+    isMobile = /android|iphone|ipad|ipod/.test(ua);
+
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       deferredPrompt = e;
@@ -18,15 +25,18 @@
       await deferredPrompt.userChoice;
       deferredPrompt = null;
       installable = false;
+      return;
+    }
+
+    // Fallback instructions
+    if (isIOS) {
+      alert("Safari → Share → Add to Home Screen");
     } else {
-      alert(
-        "Use your browser’s install option:\n\n" +
-        "• Chrome / Edge: address bar install icon\n" +
-        "• iOS Safari: Share → Add to Home Screen"
-      );
+      alert("Use the install icon in your browser’s address bar.");
     }
   }
 </script>
+
 
 <h1>Download App</h1>
 
