@@ -5,13 +5,11 @@
 
 <div in:fade={{ duration: 300 }}>
   <div in:slide={{ y: 12, duration: 300 }}>
-    <h1>CharlottesWeb Nexus</h1>
-
-    <p>
-      Dev building on modern Svelte bringing IoT interfaces to life
-      with edge-first architectures and D1-powered backends.
-    </p>
-
+   <h1>Charlottes WebNexus</h1>
+<p>
+  Designing and building complete systems across full-stack development,
+  IoT architecture, and physical production—from concept through deployment.
+</p>
     <div class="grid">
       <Card
         title="Current Focus"

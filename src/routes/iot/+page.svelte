@@ -1,6 +1,8 @@
 <script>
-  // No logic yet — visual only
-</script>
+ // Import the Card component
+ import Card from '$lib/Card.svelte';
+ </script>
+
 
 <h1>DEV Concepts & IOT D1/KV Database structures</h1>
 
@@ -8,6 +10,31 @@
   A space for collecting data, exploring signals, and connecting physical
   systems to the web.
 </p>
+
+<section class="iot-cards">
+  <a href="/work">
+    <Card
+      title="Work Systems"
+      description="Internal tools, data flows, and operational experiments."
+    />
+  </a>
+
+  <a href="/download">
+    <Card
+      title="Downloads"
+      description="Schemas, exports, and build artifacts."
+    />
+  </a>
+
+  <a href="/about">
+    <Card
+      title="About This Lab"
+      description="Intent, structure, and ongoing directions."
+    />
+  </a>
+</section>
+
+
 <p>
   Environmental data, device telemetry, and edge processing experiments will
   live here.
@@ -15,6 +42,7 @@
 <p>
   This section will evolve as experiments take shape.
 </p>
+
 
 <section class="iot-preview">
   <h2>Environment Overview</h2>
