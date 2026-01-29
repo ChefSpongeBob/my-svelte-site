@@ -2,4 +2,6 @@
 
 <p>
   @devteam for inquiries and support.
+  CharlottesTeam: CharllotesNexusWebDesign@proton.me
+  
 </p>

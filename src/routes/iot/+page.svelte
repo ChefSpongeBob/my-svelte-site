@@ -14,21 +14,21 @@
 <section class="iot-cards">
   <a href="/work">
     <Card
-      title="Work Systems"
+      title="ESP8266 GateWay/Node Communication"
       description="Internal tools, data flows, and operational experiments."
     />
   </a>
 
   <a href="/download">
     <Card
-      title="Downloads"
+      title="Downloadable Apps & Software"
       description="Schemas, exports, and build artifacts."
     />
   </a>
 
   <a href="/about">
     <Card
-      title="About This Lab"
+      title="3DPrinting, Project Dynamics"  
       description="Intent, structure, and ongoing directions."
     />
   </a>
@@ -49,7 +49,7 @@
 
   <div class="preview-card">
     <div class="preview-info">
-      <strong>Living Room</strong>
+      <strong>Cooler 1 Temps</strong>
       <div class="muted">Temp: 22.6°C</div>
       <div class="muted">Humidity: 48%</div>
       <div class="status">Last update: 2 min ago</div>
@@ -76,7 +76,7 @@
 
   <div class="preview-card">
     <div class="preview-info">
-      <strong>Bedroom</strong>
+      <strong>Cooler 2 Temps</strong>
       <div class="muted">Temp: 21.2°C</div>
       <div class="muted">Humidity: 52%</div>
       <div class="status">Last update: 5 min ago</div>
@@ -103,7 +103,7 @@
 
   <div class="preview-card">
     <div class="preview-info">
-      <strong>Basement</strong>
+      <strong>Walk In Cooler</strong>
       <div class="muted">Temp: 18.9°C</div>
       <div class="muted">Humidity: 61%</div>
       <div class="status">Last update: 12 min ago</div>
