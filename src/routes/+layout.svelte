@@ -6,10 +6,18 @@
   let sidebarCollapsed = false;
 
 
-  onMount(() => {
-    const saved = localStorage.getItem("sidebar-open");
+onMount(() => {
+  const saved = localStorage.getItem("sidebar-open");
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    // Mobile: always start collapsed (icons only)
+    sidebarCollapsed = true;
+  } else {
+    // Desktop: respect saved preference
     sidebarCollapsed = saved === "false";
-  });
+  }
+});
+
 
   let canInstall = false;
   let deferredPrompt;
@@ -145,7 +153,7 @@
 <style>
 .app-shell {
   display: flex;
-  min-height: 100%;
+  min-height: calc(100vh - 80px);
 }
 
   .sidebar {
@@ -259,9 +267,4 @@
       padding: 2rem 1.25rem;
     }
   }
-  @media (max-width: 768px) {
-  .sidebar {
-    height: 100dvh;
-  }
-}
 </style>
