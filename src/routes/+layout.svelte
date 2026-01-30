@@ -143,10 +143,10 @@
 </footer>
 
 <style>
-  .app-shell {
-    display: flex;
-    min-height: calc(100vh - 80px);
-  }
+.app-shell {
+  display: flex;
+  min-height: 100%;
+}
 
   .sidebar {
     width: 240px;
@@ -171,7 +171,6 @@
     width: 72px;
     padding: 1.5rem 0.5rem;
   }
-
   .sidebar-title {
     font-weight: 600;
     font-size: 0.9rem;
