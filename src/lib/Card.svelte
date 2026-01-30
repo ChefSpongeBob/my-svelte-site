@@ -7,8 +7,9 @@
 
 <article
   class="card"
-  transition:fly={{ y: 12, duration: 250 }}
+  in:fly={{ y: 12, duration: 250 }}
 >
+
   <h2>{title}</h2>
   <p>{description}</p>
 </article>
@@ -74,6 +75,13 @@
     line-height: 1.55;
     font-size: 0.95rem;
   }
+  @media (hover: none) {
+  article {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 </style>
 
 
