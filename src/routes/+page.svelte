@@ -119,4 +119,10 @@
     font-size: 0.75rem;
     color: var(--text-secondary);
   }
+  @media (hover: none) {
+  .card {
+    will-change: auto;
+  }
+}
+
 </style>
