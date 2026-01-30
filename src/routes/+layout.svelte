@@ -259,4 +259,9 @@
       padding: 2rem 1.25rem;
     }
   }
+  @media (max-width: 768px) {
+  .sidebar {
+    height: 100dvh;
+  }
+}
 </style>
